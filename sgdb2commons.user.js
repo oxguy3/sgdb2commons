@@ -1,12 +1,15 @@
 // ==UserScript==
 // @name         sgdb2commons
 // @namespace    https://schiff.io/
-// @version      2024-05-05
+// @version      20240505_01
 // @description  Upload images from SteamGridDB directly to Wikimedia Commons
 // @author       Hayleox
+// @license      MIT
 // @match        https://www.steamgriddb.com/*
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABsUlEQVR4Xp2Tv2tUURCFv7n7/AGRiCEoa6HlWiiI0cLCQrBbS0UEI/JeNkrCSv4AwdVCSCUuuO8tpgpqoVWiYmchKCiGpFNRsAkhkUULcRFNdrwDt0h47Io5MHCY7zB3YLj0VNycoFaL6CHXlYzd3YHoDRaLY5sb8KtwDuhHO9cYnu77vwHV+jZEh4AOuBZRez+bUpw9JsmUkew2o83Bf29w9lHBiiC26jjwFmWCNf1CnN4MvIuS9B5Jc3pDqFZzfoMzvuZsG59pdDvZSQv4ekGcviJulAgy79lrY5ZhpHEifwW0AiiyNo6T+un5J4cyeGplHuGOMUDBXc4PEIaAz3TcEZy8LM8/v65QtjJvPWOWQTlGUARs9CKnWJVvwABB5n3vsDGgALj8BsonhCK65SoavVvp3zMJtBV+mreeMcuAvienOL0Ubl4nSb8SZ8f3nr91YPDCZMm89YxZxrOL+Q0i9yDcvIrILD/aC0t9A3Fr+87EPDBjDHjDvuWHBAnrdSXdzR95BhwFvgMfAykBu0DmEFdmqrKSHxBk35fFYgXVYeAg8Bv4gHLfvzzl+Srr9BfW9KTD/6s82QAAAABJRU5ErkJggg==
 // @grant        GM_addStyle
+// @updateURL    https://gist.github.com/oxguy3/9391d09af64e2cd30fa1c85641c48c20/raw/2257570bb76f65db876c32da02285515a5b8f1c3/sgdb2commons.user.js
+// @downloadURL  https://gist.github.com/oxguy3/9391d09af64e2cd30fa1c85641c48c20/raw/2257570bb76f65db876c32da02285515a5b8f1c3/sgdb2commons.user.js
 // ==/UserScript==
 
 function runIt() {
