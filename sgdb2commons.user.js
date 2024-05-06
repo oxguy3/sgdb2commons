@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sgdb2commons
 // @namespace    https://schiff.io/
-// @version      20240505_04
+// @version      20240505_05
 // @description  Upload images from SteamGridDB directly to Wikimedia Commons
 // @author       Hayden Schiff
 // @website      https://commons.wikimedia.org/wiki/User:IagoQnsi/sgdb2commons
@@ -87,18 +87,21 @@ function generateUrl(obj, parent, yearField) {
 
   // extract useful bits from the image page URL
   let imageUrlParts = obj.imageUrl.split("/");
-  obj.imageId = imageUrlParts.pop();
+  let imageId = imageUrlParts.pop();
   obj.imageType = imageUrlParts.pop();
 
   let descriptor = "";
   for (const [key, value] of Object.entries(obj)) {
+    if (key == "downloadUrl") {
+      continue;
+    }
     descriptor += key + "=";
     descriptor += value.replaceAll(/_/g, "$US$").replaceAll(/[{}|\n]/g, "");
     descriptor += "|";
   }
   descriptor = descriptor.slice(0, -1);
 
-  let filename = `${gameLabel} ${obj.imageType} ${obj.style} (SGDB ${obj.imageId}).${fileExt}`;
+  let filename = `${gameLabel} ${obj.imageType} ${obj.style} (SGDB ${imageId}).${fileExt}`;
   filename = filename.replaceAll(/\s+/g, " ");
   return `${obj.downloadUrl} ${filename}|${descriptor}`;
 }
