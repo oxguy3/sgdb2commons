@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sgdb2commons
 // @namespace    https://schiff.io/
-// @version      20240505_03
+// @version      20240505_04
 // @description  Upload images from SteamGridDB directly to Wikimedia Commons
 // @author       Hayden Schiff
 // @website      https://commons.wikimedia.org/wiki/User:IagoQnsi/sgdb2commons
@@ -73,7 +73,8 @@ function generateUrl(obj, parent, yearField) {
   if (yearField) {
     obj.year = yearField.innerText.replace(/[()\s]/g, "");
   }
-  let gameLabel = obj.year == "" ? obj.game : `${obj.game} (${obj.year})`;
+  let gameLabel = obj.game.replaceAll(/:/g, "").replaceAll(/\/\\]/g, "-");
+  gameLabel = obj.year == "" ? gameLabel : `${gameLabel} (${obj.year})`;
 
   // retrieve style from metadata node
   const metadata = parent.querySelector(".metadata");
@@ -97,7 +98,9 @@ function generateUrl(obj, parent, yearField) {
   }
   descriptor = descriptor.slice(0, -1);
 
-  return `${obj.downloadUrl} ${gameLabel} ${obj.imageType} ${obj.style} (SGDB ${obj.imageId}).${fileExt}|${descriptor}`;
+  let filename = `${gameLabel} ${obj.imageType} ${obj.style} (SGDB ${obj.imageId}).${fileExt}`;
+  filename = filename.replaceAll(/\s+/g, " ");
+  return `${obj.downloadUrl} ${filename}|${descriptor}`;
 }
 
 function makeNavItem() {
