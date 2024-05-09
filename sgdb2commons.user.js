@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sgdb2commons
 // @namespace    https://schiff.io/
-// @version      20240505_05
+// @version      20240509_01
 // @description  Upload images from SteamGridDB directly to Wikimedia Commons
 // @author       Hayden Schiff
 // @website      https://commons.wikimedia.org/wiki/User:IagoQnsi/sgdb2commons
@@ -177,10 +177,10 @@ function makeNavItem() {
   isNavLoaded = true;
 }
 
-function addImageButtons() {
-  let assets = document.querySelectorAll(".asset-container.compact > .asset");
+function addImageButtons(assets) {
   for (let i = 0; i < assets.length; ++i) {
     let asset = assets[i];
+    asset.classList.add("asset-2commons");
 
     let pill = document.createElement("div");
     pill.classList.add("btn-2commons", "pill", "hover-fade");
@@ -206,9 +206,11 @@ function checkPage(changes, observer) {
   if (!isNavLoaded && !document.querySelector("nav .nav-2commons")) {
     makeNavItem();
   }
-  const newAssetSelector =
-    ".asset-container.compact > .asset .preview .hover-info .lr:not(:has(.btn-2commons))";
-  if (document.querySelector(newAssetSelector)) {
-    addImageButtons();
+
+  const newAssets = document.querySelectorAll(
+    ".asset-container.compact > .asset:not(.asset-2commons)"
+  );
+  if (newAssets) {
+    addImageButtons(newAssets);
   }
 }
