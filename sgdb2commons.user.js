@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sgdb2commons
 // @namespace    https://schiff.io/
-// @version      20240509_01
+// @version      20250622_01
 // @description  Upload images from SteamGridDB directly to Wikimedia Commons
 // @author       Hayden Schiff
 // @website      https://commons.wikimedia.org/wiki/User:IagoQnsi/sgdb2commons
@@ -109,7 +109,7 @@ function generateUrl(obj, parent, yearField) {
 function makeNavItem() {
   // create navbar link
   let navItem = document.createElement("li");
-  navItem.classList.add("nav-item", "nav-2commons");
+  navItem.classList.add("nav-item", "right", "nav-2commons");
   let navSpan = document.createElement("span");
   navSpan.innerHTML = commonsLogo + "to Commons";
 
